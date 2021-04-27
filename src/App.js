@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect }    from 'react-redux';
+import Header from './components/Header';
+import Landing from './components/Landing';
+import Category from './components/Category';
+import { fetchLocations }  from './actions';
 import './App.css';
+class App extends React.Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  componentDidMount() {
+		this.props.fetchLocations();
+	}
+
+  render() {
+    if(!this.props.locations) return <div>Loading...</div>
+    return (
+      <div className="container main_container">
+        <BrowserRouter>
+          <Header locations={this.props.locations} />
+					<Route exact path='/' component={Landing}/>
+					<Route path='/:location' component={Category}/>
+				</BrowserRouter>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchLocations: () => dispatch(fetchLocations())
+  }
+}
+
+const mapStateToProps = state => {
+  return { locations: state.locationsList.locations }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
