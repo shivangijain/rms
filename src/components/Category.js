@@ -5,7 +5,6 @@ import { getCategories } from '../actions';
 import BreadcrumbsLink from './BreadcrumbsLink';
 import List from './List';
 import { locationFromUrl } from '../util';
-
 class Category extends Component {
 	state = {
 		flag: false,
@@ -41,7 +40,7 @@ class Category extends Component {
 		const { categories } = this.props;
 
 		return(
-			<div>
+			<div className="category_container">
 				<BreadcrumbsLink data={this.state} handleLinkClick={() => this.handleLinkClick()}/>
 				<Grid container spacing={3}>
 					{!flag && categories && 

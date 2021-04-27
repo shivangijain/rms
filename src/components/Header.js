@@ -50,7 +50,7 @@ export default function Header(props) {
             <Link to='/' className={classes.title}>Rental Management System</Link>
           </Typography>
           <Button color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-            Location
+            Select Location
 					</Button>
 					<Menu
 						id="simple-menu"

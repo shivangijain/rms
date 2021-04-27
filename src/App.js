@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Landing from './components/Landing';
 import Category from './components/Category';
 import { fetchLocations }  from './actions';
-// import './App.css'
+import './App.css';
 class App extends React.Component {
 
   componentDidMount() {
@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     if(!this.props.locations) return <div>Loading...</div>
     return (
-      <div className="container">
+      <div className="container main_container">
         <BrowserRouter>
           <Header locations={this.props.locations} />
 					<Route exact path='/' component={Landing}/>

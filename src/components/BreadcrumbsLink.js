@@ -5,17 +5,17 @@ import { setLocationToUrl } from '../util';
 
 const BreadcrumbsLink = (props) => {
 	const {location, branch, category, flag } = props.data;
-	
+
 	return(
 		<div className="container">
 			<Breadcrumbs aria-label="breadcrumb">
 				{location && <Link to={`/${setLocationToUrl(location)}`}onClick={() => props.handleLinkClick()} >
-					{location}
+					{location.toUpperCase()}
 				</Link>}
 				{branch && <Link to={`/${setLocationToUrl(location)}/${setLocationToUrl(branch)}`} onClick={() => props.handleLinkClick()} >
-					{branch}
+					{branch.toUpperCase()}
 				</Link>}
-				{flag && <Typography color="textPrimary">{category.name}</Typography>}
+				{flag && <Typography color="textPrimary">{category.name.toUpperCase()}</Typography>}
 			</Breadcrumbs>
 		</div>    
 	)

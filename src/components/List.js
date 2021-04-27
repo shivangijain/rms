@@ -7,7 +7,7 @@ const List = (props) => {
 	return(
 		<React.Fragment>
 			{lists.map((item, index) => 
-				item.image && <Grid item xs={6} sm={3} key={index}>
+				item.image && <Grid item xs={6} sm={4} key={index}>
 					<Card onClick={() => type === 'category' && props.handleCategory(item)} key={item.image}>
 						<CardActionArea>
 							<CardMedia
